@@ -41,9 +41,23 @@ function createWindow () {
 
   // Hide toolbar tooltips / bar
   win.setMenuBarVisibility(false);
-
+    
+  // Check for Apple Music Sites
+  var appleMusicUrl = "https://beta.music.apple.com"
+  var url = "https://beta.music.apple.com/assets/product/MissingArtworkMusic_dark.svg";
+  var img = new Image();
+  img.src = url;
+  img.onload = function() {
+    //Up
+	var appleMusicUrl = "https://beta.music.apple.com"
+  }
+    img.onerror = function() {
+    //Down
+	alert("The Apple Music beta Server is down, switching to official Server.");
+	var appleMusicUrl = "https://music.apple.com"
+  }
   // Load Apple Music site
-  win.loadURL("https://beta.music.apple.com");
+  win.loadURL(appleMusicUrl);
 
   win.on('page-title-updated', function(e) {
     e.preventDefault()
