@@ -35,6 +35,18 @@ function createWindow () {
       preload: path.join(__dirname, './assets/MusicKitInterop.js'),
       allowRunningInsecureContent: true,
     }
+	  //settings thing - in progresss
+	  
+      const template = [
+        {
+            label: 'About',
+        }
+        {
+            label: 'Settings',
+        }
+      ]
+      const menu = Menu.buildFromTemplate (template)
+      Menu.setApplicationMenu (menu)
   })
 
   // Apply dangerous sandbox patch for Debian/Ubuntu devices and systems. Disabled by default.
