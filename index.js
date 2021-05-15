@@ -5,20 +5,32 @@ const electron = require('electron');
 const path = require('path')
 const isReachable = require("is-reachable");
 const nativeTheme = electron.nativeTheme;
+const config = require('electron-json-config');
 const client = require('discord-rich-presence')('749317071145533440');
 let isQuiting
 let isMaximized
 electron.app.commandLine.appendSwitch("enable-transparent-visuals");
 
-// Optional Features
-const customtitlebar = true // NOTE: Enables a custom macOS-isk titlebar instead of your respected platforms titlebars. Enable frame manually if disabled. (true by default)
-const discordrpc = true // NOTE: Removes all Discord RPC when disabled. (true by default)
-const showalbum = true // NOTE: Removes Album Name from Discord RPC when disabled (true by default)
-const sitedetection = false // NOTE: Checks sites on startup if online when enabled. (false by default. can slow down start up performance)
-const showscrollbars = false // NOTE: Shows scrollbars on page when enabled. (false by default)
-const removeapplelogo = true // NOTE: Removes Apple Logo when enabled. (true by default)
-const forcedarkmode = false // NOTE: Really only useful for Linux machines that don't support css dark mode. (false by default)
-const sexytransparencymode = false // NOTE: kind of a CSS experiment that uses Glasstron as its blur renderer.
+
+//config by devil
+config.set('customtitlebar', 'true');
+config.set('discordrpc', 'true');
+config.set('showalbum', 'true');
+config.set('sitedetection', 'false');
+config.set('showscrollbars', 'false');
+config.set('removeapplelogo', 'true');
+config.set('forcedarkmode', 'false');
+config.set('transparencymode', 'false');
+// import from config cuz too lazy to do it the right way
+const customtitlebar = config.get('customtitlebar')
+const discordrpc = config.get('discordrpc')
+const showalbum = config.get('showalbum')
+const sitedetection = config.get('sitedetection')
+const showscrollbars = config.get('showscrollbars')
+const removeapplelogo = config.get('removeapplelogo')
+const forcedarkmode = config.get('forcedarkmode')
+const sexytransparencymode = config.get('transparencymode')
+console.log(app.getPath('userData'));
 // For those not familiar with javascript in anyway shape or form just change things from false to true or vice versa. Compile accordingly.
 
 if (sexytransparencymode === true) {
